@@ -7,7 +7,7 @@ use App\Models\Article;
 use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Computed;
 
-#[Lazy]
+#[Lazy(isolate: false)]
 class PublishedCount extends Component
 {
     public $placeholderText = '';
