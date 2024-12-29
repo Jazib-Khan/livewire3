@@ -1,5 +1,7 @@
 # livewire3
 
+Built article listing web app utilizing Laravel | Livewire 3 for responsive components. App includes CRUD functionality for articles and admin authentication.
+
 ![image](https://github.com/user-attachments/assets/71f442bf-88c0-416f-889c-0f635cc21309)
 ![image](https://github.com/user-attachments/assets/56a0c03c-7281-4488-8a2e-ed50ed3311ee)
 ![image](https://github.com/user-attachments/assets/637427a3-d6c4-4e03-9504-85ad255c300f)
