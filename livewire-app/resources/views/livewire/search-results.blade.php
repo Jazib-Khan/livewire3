@@ -1,4 +1,4 @@
-<div class="{{ $show > 0 ? 'block' : 'hidden' }}">
+<div>
     <div class="mt-4 p-4 absolute border rounded-md bg-gray-700 border-indigo-700">
         @if (count($results) == 0)
             <div class="text-white">No results found</div>
