@@ -7,6 +7,7 @@ use App\Models\Article;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class EditArticle extends AdminComponent
 {
@@ -17,6 +18,18 @@ class EditArticle extends AdminComponent
     public function mount(Article $article)
     {
         $this->form->setArticle($article);
+    }
+
+    public function downloadPhoto()
+    {
+        return response()->download(
+            Storage::disk('public')->path($this->form->photo_path),
+            'article.png'
+        );
+
+        /* return response()->streamDownload(function () { */
+
+        /* }, 'article.png'); */
     }
 
     public function save()
