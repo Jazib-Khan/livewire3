@@ -5,19 +5,42 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use App\Models\Article;
+use Livewire\WithPagination;
 
 #[Title('Manage Articles')]
 class ArticleList extends AdminComponent
 {
+    use withPagination;
+
+    public $showOnlyPublished = false;
+
     public function delete(Article $article)
     {
         $article->delete();
     }
 
+    public function showAll()
+    {
+        $this->showOnlyPublished = false;
+        $this->resetPage(pageName: 'articles-page');
+    }
+
+    public function showPublished()
+    {
+        $this->showOnlyPublished = true;
+        $this->resetPage(pageName: 'articles-page');
+    }
+
     public function render()
     {
+        $query = Article::query();
+
+        if ($this->showOnlyPublished) {
+            $query->where('published', 1);
+        }
+
         return view('livewire.article-list', [
-            'articles' => Article::all(),
+            'articles' => $query->paginate(10, pageName: 'articles-page'),
         ]);
     }
 }
